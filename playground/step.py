@@ -1,4 +1,5 @@
 from context import Context
+
 from connect.client import ConnectClient
 
 
@@ -12,6 +13,10 @@ class Step:
 
     def client(self, token):
         return ConnectClient(token, endpoint=self.context['endpoint'], use_specs=False)
+
+    @property
+    def dclient(self):
+        return self.client(self.context.distributor_account_token)
 
     def do(self, context=None):
         if context:

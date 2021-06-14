@@ -29,6 +29,7 @@ Hub Marketplace: MP-59882 "Playground Marketplace 63412" for HB-7859-9984
 Created Program Agreement AGP-777-708-207 Playground Program Agreement 5366
 Created Distribution Agreement AGD-887-501-260 Distribution Playground Program Agreement 5366 for MP-18375
 Created Distribution Agreement AGD-554-900-752 Distribution Playground Program Agreement 5366 for MP-59882
+Saving context into context.json
 {
     "hubs": [
         "HB-5446-4577",
@@ -44,4 +45,33 @@ Created Distribution Agreement AGD-554-900-752 Distribution Playground Program A
         "AGD-554-900-752"
     ]
 }
+```
+
+# B - Vendor Account Creation
+### INPUT
+* Distributor Account Token
+* Program Agreement ID
+### ACTION(S)
+* Create Program Contract based on the Input
+# OUTPUT
+* Program Contract ID
+* Vendor Account ID
+* Vendor Account Token
+
+```bash
+$ python vaccount.py
+Loading context from context.json
+Program Contract created: CRP-40536-98496-31778 "Contract of Playground Program Agreement 4162"
+Partner created: VA-502-744 "Vendor for Playground contract 71501"
+Account activation Link is https://portal.cnct.info/contracts/activate?secret=...
+Vendor Account created: VA-502-744 "Vendor for Playground contract 71501"
+Vendor token created: SU-903-473-071 "Playground token" - ApiKey SU-903-473-071:...
+Saving context into context.json
+{
+    ...
+    "program_contract_id": "CRP-40536-98496-31778",
+    "vendor_account_id": "VA-502-744",
+    "vendor_accoint_token": "ApiKey SU-903-473-071:..."
+}}
+
 ```

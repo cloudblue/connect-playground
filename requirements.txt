@@ -1,2 +1,2 @@
 connect-openapi-client>=22.0.5
-connect-cli
+connect-cli>=22.27

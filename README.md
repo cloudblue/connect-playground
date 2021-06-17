@@ -20,8 +20,29 @@ Just set of scripts to initialise accpunt with production-like data:
 
 ```bash
 $ pip install -r requirements.txt
-$ cd steps
-$ python daccount.py 'distributor_account_token=ApiKey ...'
+$ ccli play
+Reading scripts library from scripts
+Usage: ccli play [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  -h, --help  Show this message and exit.
+
+Commands:
+  all                       Initialize everything that possible.
+  init-distributor-account  Initialize distributor account.
+  vendor-account-creation   Create program contract, create vendor account.
+  
+$ ccli play init-distributor-account --help
+Reading scripts library from scripts
+Usage: ccli play init-distributor-account [OPTIONS]
+
+Options:
+  --distributor_account_token TEXT
+                                  Distributor account token
+  -h, --help                      Show this message and exit.
+
+$ ccli play init-distributor-account
+--- Init Distributor Account ---
 Hub created: HB-5446-4577 "Playground Hub 44566 - Staging"
 Hub created: HB-7859-9984 "Playground Hub 63412 - Production"
 Hub Marketplace: MP-18375 "Playground Marketplace 44566" for HB-5446-4577
@@ -59,19 +80,24 @@ Saving context into context.json
 * Vendor Account Token
 
 ```bash
-$ python vaccount.py
+$ ccli play vendor-account-creation --help
+
+Reading scripts library from /Users/vova/src/connect/connect-cli/scripts
+Usage: ccli play vendor-account-creation [OPTIONS]
+
+Options:
+  --program_agreement_id TEXT     Specify program agreement ID
+  --distributor_account_token TEXT
+                                  Distributor account token
+  -h, --help                      Show this message and exit.
+  
+$ ccli play vendor-account-creation 
 Loading context from context.json
+--- Vendor Account Creation ---
 Program Contract created: CRP-40536-98496-31778 "Contract of Playground Program Agreement 4162"
 Partner created: VA-502-744 "Vendor for Playground contract 71501"
 Account activation Link is https://portal.cnct.info/contracts/activate?secret=...
 Vendor Account created: VA-502-744 "Vendor for Playground contract 71501"
 Vendor token created: SU-903-473-071 "Playground token" - ApiKey SU-903-473-071:...
 Saving context into context.json
-{
-    ...
-    "program_contract_id": "CRP-40536-98496-31778",
-    "vendor_account_id": "VA-502-744",
-    "vendor_accoint_token": "ApiKey SU-903-473-071:..."
-}}
-
 ```

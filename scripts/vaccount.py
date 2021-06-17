@@ -75,7 +75,7 @@ class VendorAccountCreation(Script):
 
     def do(self, context=None):
         super().do(context=context)
-
+        
         print('--- Vendor Account Creation ---')
         self.create_program_contract()
         self.create_vendor_account()

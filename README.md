@@ -21,7 +21,7 @@ Just set of scripts to initialise accpunt with production-like data:
 ```bash
 $ pip install -r requirements.txt
 $ ccli play
-Reading scripts library from scripts
+Reading scripts library from /home/user/scripts
 Usage: ccli play [OPTIONS] COMMAND [ARGS]...
 
 Options:
@@ -33,7 +33,7 @@ Commands:
   vendor-account-creation   Create program contract, create vendor account.
   
 $ ccli play init-distributor-account --help
-Reading scripts library from scripts
+Reading scripts library from /home/user/scripts
 Usage: ccli play init-distributor-account [OPTIONS]
 
 Options:
@@ -42,6 +42,7 @@ Options:
   -h, --help                      Show this message and exit.
 
 $ ccli play init-distributor-account
+Reading scripts library from /home/user/scripts
 --- Init Distributor Account ---
 Hub created: HB-5446-4577 "Playground Hub 44566 - Staging"
 Hub created: HB-7859-9984 "Playground Hub 63412 - Production"
@@ -82,7 +83,7 @@ Saving context into context.json
 ```bash
 $ ccli play vendor-account-creation --help
 
-Reading scripts library from /Users/vova/src/connect/connect-cli/scripts
+Reading scripts library from /home/user/scripts
 Usage: ccli play vendor-account-creation [OPTIONS]
 
 Options:

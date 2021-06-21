@@ -15,8 +15,13 @@ class VendorAccountCreation(Script):
     def options(cls):
         return [
             OptionWrapper('--distributor_account_token', help='Distributor account token'),
+            OptionWrapper('--distributor_account_id', help='Distributor account ID (required only if token from user'),
             OptionWrapper('--program_agreement_id', help='Specify program agreement ID'),
         ]
+
+    def select_context(self):
+        if self.context.distributor_account_id and '@' in self.context.distributor_account_token:
+            self.dclient.ns('auth').context.create({'account': {'id': self.context.distributor_account_id}})
 
     def create_program_contract(self):
         cid = random.randint(10000, 99999)
@@ -63,6 +68,9 @@ class VendorAccountCreation(Script):
         self.context.vendor_account_id = vacc['id']
 
     def create_vendor_account_token(self):
+        # Switch context to vendor account
+        self.dclient.ns('auth').context.create({'account': {'id': self.context.vendor_account_id}})
+
         t = self.dclient.ns('auth').tokens.create({
             'name': 'Playground token',
             'extension': {'id': 'EXT-000'},
@@ -77,6 +85,7 @@ class VendorAccountCreation(Script):
         super().do(context=context)
         
         print('--- Vendor Account Creation ---')
+        self.select_context()
         self.create_program_contract()
         self.create_vendor_account()
         self.create_vendor_account_token()

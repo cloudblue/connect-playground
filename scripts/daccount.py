@@ -14,7 +14,12 @@ class InitDistributorAccount(Script):
     def options(cls):
         return [
             OptionWrapper('--distributor_account_token', help='Distributor account token'),
+            OptionWrapper('--distributor_account_id', help='Distributor account ID (required only if token from user'),
         ]
+
+    def select_context(self):
+        if self.context.distributor_account_id and '@' in self.context.distributor_account_token:
+            self.dclient.ns('auth').context.create({'account': {'id': self.context.distributor_account_id}})
 
     def create_hubs(self, extids):
         hubs = []
@@ -94,6 +99,7 @@ class InitDistributorAccount(Script):
         print('--- Init Distributor Account ---')
 
         extids = [random.randint(10000, 99999) for _ in range(2)]
+        self.select_context()
         self.create_hubs(extids)
         self.create_marketplaces(extids)
         self.create_program_agreement()
